@@ -62,3 +62,5 @@ typings/
 
 
 *.exercism
+
+*.DS_Store
