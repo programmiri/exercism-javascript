@@ -5,13 +5,13 @@ class Triangle {
     this.c = c;
   }
 
-  kind() {
+  isValidTriangle() {
     if (this.a + this.b + this.c <= 0) {
-      throw new Error();
+      return false;
     }
 
     if (this.a < 0 || this.b < 0 || this.c < 0) {
-      throw new Error();
+      return false;
     }
 
     if (
@@ -19,13 +19,29 @@ class Triangle {
       this.a + this.c < this.b ||
       this.b + this.c < this.a
     ) {
-      throw new Error();
+      return false;
     }
 
-    if (this.a === this.b && this.b === this.c) {
+    return true;
+  }
+
+  isEquilateral() {
+    return this.a === this.b && this.b === this.c;
+  }
+
+  isIsosceles() {
+    return this.a === this.b || this.a === this.c || this.b === this.c;
+  }
+
+  kind() {
+    if (!this.isValidTriangle()) {
+      throw new Error();
+    }
+    if (this.isEquilateral()) {
       return 'equilateral';
     }
-    if (this.a === this.b || this.a === this.c || this.b === this.c) {
+
+    if (this.isIsosceles()) {
       return 'isosceles';
     }
     return 'scalene';
