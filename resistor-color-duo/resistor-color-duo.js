@@ -1,23 +1,24 @@
-const colorMap = {
-  black: 0,
-  brown: 1,
-  red: 2,
-  orange: 3,
-  yellow: 4,
-  green: 5,
-  blue: 6,
-  violet: 7,
-  grey: 8,
-  white: 9,
-};
+const colorMap = [
+  'black',
+  'brown',
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'blue',
+  'violet',
+  'grey',
+  'white',
+];
 
 function value(colorNameList) {
-  const accNumbers = colorNameList
-    .map((colorName) => {
-      return colorMap[colorName];
-    })
+  const numAsString = colorNameList
+    .reduce((acc, curr) => {
+      acc.push(colorMap.indexOf(curr));
+      return acc;
+    }, [])
     .join('');
-  return parseInt(accNumbers);
+  return Number(numAsString);
 }
 
 export { value };
