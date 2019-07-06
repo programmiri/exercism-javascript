@@ -11,8 +11,7 @@ const translationMap = {
 };
 
 export const toRna = (string) => {
-	return string
-		.split('')
-		.map((char) => translationMap[char] || char)
-		.join('');
+	return string.replace(/G|C|T|A/g, (match) => {
+		return translationMap[match];
+	});
 };
