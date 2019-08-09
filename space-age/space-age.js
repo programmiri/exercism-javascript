@@ -1,4 +1,6 @@
-const planetMap = {
+const BASE_SECONDS = 31557600;
+
+const PLANET_MAP = {
 	earth: 1,
 	mercury: 0.2408467,
 	venus: 0.61519726,
@@ -9,12 +11,9 @@ const planetMap = {
 	neptune: 164.79132,
 };
 
-function roundFloat(float, dec) {
-	return +Number.parseFloat(float).toFixed(dec);
-}
+const roundFloat = (float, dec) => Number(float.toFixed(dec));
 
 export const age = (planet, seconds) => {
-	const baseSeconds = 31557600;
-	const yearsNonRounded = seconds / (baseSeconds * planetMap[planet]);
+	const yearsNonRounded = seconds / (BASE_SECONDS * PLANET_MAP[planet]);
 	return roundFloat(yearsNonRounded, 2);
 };
