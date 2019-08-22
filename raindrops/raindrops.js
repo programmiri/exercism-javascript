@@ -1,14 +1,20 @@
+function modulo(number, factor) {
+	return number % factor === 0;
+}
+
 export const convert = (input) => {
 	let result = '';
 
-	if (input % 3 === 0) {
+	if (modulo(input, 3)) {
 		result = result + 'Pling';
 	}
-	if (input % 5 === 0) {
+	if (modulo(input, 5)) {
 		result = result + 'Plang';
 	}
-	if (input % 7 === 0) {
+	if (modulo(input, 7)) {
 		result = result + 'Plong';
 	}
-	return result.length > 0 ? result : input.toString();
+
+	if (result.length === 0) return input.toString();
+	return result;
 };
