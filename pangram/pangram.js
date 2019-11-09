@@ -1,8 +1,3 @@
-//
-// This is only a SKELETON file for the 'Pangram' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 const alphabet = [
 	'a',
 	'b',
@@ -32,5 +27,6 @@ const alphabet = [
 	'z',
 ];
 export const isPangram = (string) => {
-	return alphabet.every((char) => string.toLowerCase().includes(char));
+	const lowerCaseString = string.toLowerCase()
+	return alphabet.every((char) => lowerCaseString.includes(char));
 };
