@@ -6,7 +6,7 @@ export class Squares {
   get sumOfSquares() {
     let count = 0;
     for (let i = 1; i <= this.number; i++ ) {
-      count += i * i
+      count += Math.pow(i, 2)
     }
     return count;
   }
@@ -16,7 +16,7 @@ export class Squares {
     for (let i = 1; i <= this.number; i++ ) {
       count += i
     }
-    return count * count;
+    return Math.pow(count, 2)
   }
 
   get difference() {
