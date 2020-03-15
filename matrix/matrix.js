@@ -1,22 +1,31 @@
 export class Matrix {
   constructor(string) {
     this.matrix = string;
+    this.firstLineNumber = new RegExp(/^([0-9]+)/gm) 
+    this.leadingWhitespace = new RegExp(/^[ \t]+/gm)
   }
 
-  splitInRows() {
+  splitInRows(stringMatrix) {
+    return stringMatrix.split('\n').map( entry => entry.split(' ').map(entry => parseInt(entry, 10)))
+  }
 
-    const rowsFirst = this.matrix.split('\n').map( entry => entry.split(''))
-    // .map( entry => parseInt(entry))
-    console.log(rowsFirst)
+  splitInColumns(stringMatrix) {
+    const columns = []
+
+    let matrixToWorkOn = stringMatrix
+    while (matrixToWorkOn.trim().length) {
+      const column = matrixToWorkOn.match(this.firstLineNumber).map(entry => parseInt(entry, 10))
+      columns.push([... column])
+      matrixToWorkOn = matrixToWorkOn.replace(this.firstLineNumber, '').replace(this.leadingWhitespace, '')
+    }
+   return columns
   }
 
   get rows() {
-    const test = this.splitInRows()
-    // console.log(this.splitInRows())
-    return test
+    return this.splitInRows(this.matrix)    
   }
 
   get columns() {
-    
+    return this.splitInColumns(this.matrix)
   }
 }
